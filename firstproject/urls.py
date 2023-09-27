@@ -21,5 +21,5 @@ import firstapp.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', include(firstapp.urls))
+    path('firstapp/', include(firstapp.urls))
 ]

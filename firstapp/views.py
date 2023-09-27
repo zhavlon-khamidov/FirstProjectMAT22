@@ -3,4 +3,16 @@ from django.http import HttpResponse
 
 
 def hello(request):
-    return HttpResponse('Hello World!')
+    return render(request, 'main.html')
+    # return HttpResponse("Hello World")
+
+
+def hello_template(request):
+    name = 'Mat 22'
+    age = 15
+    context = {
+        'name': name,
+        'students': ['Farida','Madina','Dinara','Baiel','Akylai'],
+        'age' : age > 18
+        }
+    return render(request, 'index.html',context)

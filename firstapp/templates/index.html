@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>Hello {{ name | default:"World" }}</h1>
+
+<ul>
+    {% for student in students %} 
+    <li>{{ student }}</li>
+    {% endfor %}
+</ul>
+
+{% if age %}
+<h2>s;ldfjalksjd flkajsld fjalskdfj lkja</h2>
+{% else %}
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non facilis cum, impedit commodi qui modi. Libero, architecto, reprehenderit eaque culpa iusto repellendus temporibus in quam similique perferendis incidunt, non aspernatur!</p>
+{% endif %}
+{% endblock content %}

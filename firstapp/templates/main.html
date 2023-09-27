@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>Header</header>
+    <nav><ul>
+        <a href="{% url "home" %}"><li>Home</li></a>
+        <a href="{% url "template" %}"><li>About us</li></a>
+        <a href=""><li>Contacts</li></a>
+    </ul></nav>
+
+    <main>
+        {% block content %}
+        <h1>Main page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga laudantium cumque eos saepe iusto et dolorem voluptatum veniam sed, laborum doloribus deserunt dolor soluta placeat, magnam voluptates, ea enim?</p>
+        {% endblock content %} 
+    </main>
+
+    <footer>Footer Copyright</footer>
+</body>
+</html>
