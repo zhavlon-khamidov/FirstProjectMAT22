@@ -9,3 +9,7 @@ class Student(models.Model):
 
     def __str__(self) -> str:
         return self.first_name + " " + self.last_name
+    
+class Group(models.Model):
+    group_code = models.CharField(max_length=10)
+    department = models.CharField(max_length=25)
