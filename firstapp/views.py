@@ -12,7 +12,7 @@ def hello_template(request):
     age = 15
     context = {
         'name': name,
-        'students': ['Farida','Madina','Dinara','Baiel','Akylai'],
+        'students': ['Baktilek', 'Dinara','Farida','Madina','Dinara','Baiel','Akylai'],
         'age' : age > 18
         }
     return render(request, 'index.html',context)
