@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
+from blogapp.forms import PostForm
 
 from blogapp.models import Post
 
@@ -25,12 +26,11 @@ def post_by_id(request, id):
 
 @csrf_exempt
 def create_post(request:HttpRequest):
+    form = PostForm()
     if(request.method == 'POST'):
-        print("POST request handled")
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        print('title = ', title)
-        print('content = ', content)
-        new_post = Post(title = title, content=content)
-        new_post.save()
-    return render(request, "blogapp/post-form.html")
+        form = PostForm(data=request.POST)
+        form.save()
+        return redirect('posts')
+
+    context = {'form':form,}
+    return render(request, "blogapp/post-form.html", context)

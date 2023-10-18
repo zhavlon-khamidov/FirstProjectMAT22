@@ -3,6 +3,7 @@
 {% block content %}
 
 <h1>All Posts</h1>
+<a href="{% url "create_post" %}">Add new post</a>
 <ul>
     {% for post in posts %}
     <a href="{% url "post_by_id" post.id %}"><li>{{post}}</li></a>
