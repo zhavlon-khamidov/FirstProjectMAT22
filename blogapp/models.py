@@ -21,7 +21,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
-    tags = models.ManyToManyField(Tag, null=True, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     id = models.UUIDField(primary_key=True,default=uuid.uuid4, unique=True, editable=False)
 

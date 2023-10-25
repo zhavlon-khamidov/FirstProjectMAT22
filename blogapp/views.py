@@ -2,10 +2,10 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from blogapp.forms import PostForm
+import string
 
 from blogapp.models import Post
 
-# Create your views here.
 
 def all_posts(request:HttpRequest):
     context = {
@@ -34,3 +34,25 @@ def create_post(request:HttpRequest):
 
     context = {'form':form,}
     return render(request, "blogapp/post-form.html", context)
+
+@csrf_exempt
+def update_post(request:HttpRequest, id:string):
+    post = Post.objects.get(id=id)
+    print(post)
+    form = PostForm(instance=post)
+    if(request.method == 'POST'):
+        form = PostForm(data=request.POST, instance=post)
+        form.save()
+        return redirect('posts')
+    
+    context = {'form':form,}
+    return render(request, "blogapp/post-form.html", context)
+
+@csrf_exempt
+def delete_post(request, id):
+    post = Post.objects.get(id=id)
+    if(request.method == 'POST'):
+        post.delete()
+        return redirect('posts')
+    context = {'post':post}
+    return render(request, 'blogapp/delete-post.html')

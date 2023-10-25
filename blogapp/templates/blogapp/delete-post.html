@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+Are you sure to delte the post: {{ post.title }}
+
+<form method='post'>
+    <input type=submit value=Yes>
+    <a href="{% url "posts" %}">No</a>
+</form>
+
+{% endblock content %}

@@ -6,7 +6,10 @@
 <a href="{% url "create_post" %}">Add new post</a>
 <ul>
     {% for post in posts %}
-    <a href="{% url "post_by_id" post.id %}"><li>{{post}}</li></a>
+    <li>
+        <a href="{% url "post_by_id" post.id %}">{{post}}</a>&nbsp;
+        <a href="{% url "update_post" post.id %}">Edit</a>&nbsp;
+        <a href="{% url "delete_post" post.id %}">Delete</a></li>
     {% endfor %}
 </ul>
 
